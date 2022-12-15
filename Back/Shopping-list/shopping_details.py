@@ -41,7 +41,7 @@ class Shop:
     def get_list():
 
         # sql = "SELECT list.list_id, list.shopping_location, list.shopping_date FROM shopping_list.list";
-        sql = "SELECT list.list_id, list.shopping_location, DATE_FORMAT(list.shopping_date, '%Y-%m-01') as shopping_date FROM shopping_list.list";
+        sql = "SELECT list.list_id, list.shopping_location, DATE_FORMAT(list.shopping_date, '%Y-%m-01') as shopping_date FROM shopping_list.list ORDER BY length(list.list_id), list.list_id";
         conn = Shop._get_connection()
         cur = conn.cursor()
         res = cur.execute(sql, args=None)
@@ -85,11 +85,11 @@ class Shop:
         return result
 
     @staticmethod
-    def delete_list(id, address, date):
-        sql = "DELETE FROM shopping_list.list WHERE list_id = %s and shopping_location = %s and shopping_date = %s";
+    def delete_list(id):
+        sql = "DELETE FROM shopping_list.list WHERE list_id = %s";
         conn = Shop._get_connection()
         cur = conn.cursor()
-        res = cur.execute(sql, args=(id, address, date))
+        res = cur.execute(sql, args=(id))
         result = cur.fetchall()
         return result
 

@@ -116,7 +116,7 @@ def list_request():
         if request.method == "POST":
             Shop.add_list(id, address, date)
         if request.method == "DELETE":
-            Shop.delete_list(id, address, date)
+            Shop.delete_list(id)
         if request.method == "GET":
             Shop.update_list(id, date)
         return "I have your post request"
