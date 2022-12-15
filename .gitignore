@@ -1,3 +1,6 @@
 .idea/*
 Front/node_modules/*
 Front/oackage-lock.json
+node_modules/*
+package-lock.json
+Front/yarn.lock

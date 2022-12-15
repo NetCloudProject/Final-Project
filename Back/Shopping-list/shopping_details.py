@@ -39,7 +39,9 @@ class Shop:
 
     @staticmethod
     def get_list():
-        sql = "SELECT list.list_id, list.shopping_location, list.shopping_date FROM shopping_list.list";
+
+        # sql = "SELECT list.list_id, list.shopping_location, list.shopping_date FROM shopping_list.list";
+        sql = "SELECT list.list_id, list.shopping_location, DATE_FORMAT(list.shopping_date, '%Y-%m-01') as shopping_date FROM shopping_list.list";
         conn = Shop._get_connection()
         cur = conn.cursor()
         res = cur.execute(sql, args=None)
