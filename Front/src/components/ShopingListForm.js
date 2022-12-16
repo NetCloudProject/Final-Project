@@ -9,6 +9,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import axios from 'axios' ;
 import {useEffect} from "react";
+import './FormStyles.css'
 
 const columns = [
   { id: 'list_id', label: 'List Index', minWidth: 170, color : 'black' },
