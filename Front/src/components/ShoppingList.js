@@ -6,11 +6,17 @@ import React from 'react';
  */
 const ShoppingList = (props) =>{
     // console.log(props)
+
+ function handleDelete(event) {
+  alert("You hit the button")
+  console.log()
+ }
+
  return (
   <>
       {props.items.map((item, index) => (
             <div key = {index} style = {{fontSize:20, color: 'white', textAlign: "center"}}> {item}
-            <input id="btnSubmit" type="button" value="Delete"  display='none' visibility="hidden" />
+
             </div>
         ))}
   </>
