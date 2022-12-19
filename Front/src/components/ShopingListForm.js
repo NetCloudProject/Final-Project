@@ -39,7 +39,9 @@ export default function StickyHeadTable() {
       const url = "http://192.168.1.106:5011/show_list";
       await axios.get(url).then (response => {
         setRows((response.data["response"]));
+        console.log(response.data)
     })
+
   }
 
   useEffect(() => {

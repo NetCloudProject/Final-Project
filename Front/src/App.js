@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect } from "react"
 import { Route, Routes } from 'react-router-dom';
 import Home from './routes/Home';
 import Schedule from './routes/Schedule';
@@ -6,6 +7,7 @@ import Shopping from './routes/Shopping';
 import Travel from './routes/Travel';
 
 function App() {
+
   return (
     <>
       <Routes>
