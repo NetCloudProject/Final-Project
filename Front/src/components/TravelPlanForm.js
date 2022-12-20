@@ -10,27 +10,27 @@ const ShoppingForm = () => {
     const [index, setIndex] = useState("");
     const [product, setProduct] = useState( "");
     const [date, setDate] = useState( "");
-    const [shopping_list, setShoppingList] = useState([]);
+    // const [shopping_list, setShoppingList] = useState([]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
         // alert(`Click the Check List Button to query data`);
     }
 
-    function handleDateUpdate() {
-        axios.post(`http://127.0.0.1:5011/list_update`, {
-            id:index,
-            date: date
-            })
-            .then((response) => {
-              console.log(response);
-            }, (error) => {
-              console.log(error);
-            });
-        alert(`Shoping Date of list ${index} is updated to ${date}`)
-        // setDate("")
-        window.location.reload();
-    }
+    // function handleDateUpdate() {
+    //     axios.post(`http://127.0.0.1:5011/list_update`, {
+    //         id:index,
+    //         date: date
+    //         })
+    //         .then((response) => {
+    //           console.log(response);
+    //         }, (error) => {
+    //           console.log(error);
+    //         });
+    //     alert(`Shoping Date of list ${index} is updated to ${date}`)
+    //     // setDate("")
+    //     window.location.reload();
+    // }
 
     function handleDelete() {
         axios.delete(`http://127.0.0.1:5011/product`, { data:{
@@ -84,45 +84,59 @@ const ShoppingForm = () => {
                     value={index}
                     onChange={(e) => setIndex(e.target.value)}
                 />
-            <button type="button" onClick={handleClick}>
-                Check List
-            </button>
+            {/* <button type="button" onClick={handleClick}>
+                Location
+            </button> */}
             <ShoppingList items={shopping_list}/>
-            {shopping_list.length !== 0  &&
+            
                <input
                     type="string"
                     value={product}
                     onChange={(e) => setProduct(e.target.value)}
                 />
-            }
-            { shopping_list.length !== 0 && shopping_list[0] !== "NOT FOUND" &&
-              <button type="button" onClick={handleDelete}>
-                Delete
-              </button>
-             }
+                
+              {/* <button type="button" onClick={handleDelete}>
+                Start Date
+              </button> */}
 
-             { shopping_list.length !== 0 &&
+              <input
+                    type="string"
+                    value={product}
+                    onChange={(e) => setProduct(e.target.value)}
+                />
+
               <button type="button" onClick={handleAdd}>
-                Add
+                   Add
               </button>
-             }
+
+
+              <input
+                    type="string"
+                    value={product}
+                    onChange={(e) => setProduct(e.target.value)}
+                />
+
+              <button type="button" onClick={handleDelete}>
+                   Delete
+              </button>
+{/*               
              { shopping_list.length !== 0 &&
                  <label>Enter List Index to update shopping date: </label>
-             }
+             } */}
 
-             { shopping_list.length !== 0 &&
+             {/* { shopping_list.length !== 0 &&
                  <input
                     type="date"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
                 />
-             }
+             } */}
 
-             { shopping_list.length !== 0 &&
+             {/* { shopping_list.length !== 0 &&
                  <button type="button" onClick={handleDateUpdate}>
                 Update
               </button>
-             }
+             } */}
 
 
 
