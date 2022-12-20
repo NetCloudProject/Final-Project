@@ -34,6 +34,7 @@ const ShoppingForm = () => {
 
     function handleDelete() {
         axios.delete(`http://3.143.144.170:5011/product`, { data:{
+
             id: index,
             name: product
         }})
@@ -49,6 +50,7 @@ const ShoppingForm = () => {
 
     function handleAdd() {
         axios.post(`http://3.143.144.170:5011/product`, {
+
             id: index,
             name: product
         })
