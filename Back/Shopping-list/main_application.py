@@ -117,9 +117,18 @@ def list_request():
             Shop.add_list(id, address, date)
         if request.method == "DELETE":
             Shop.delete_list(id)
-        if request.method == "GET":
-            Shop.update_list(id, date)
+        # if request.method == "GET":
+        #     Shop.update_list(id, date)
         return "I have your post request"
+
+@app.route("/list_update", methods=["POST"])
+def list_update():
+    req_data = request.get_json()
+    id = req_data['id']
+    date = req_data['date']
+    print("date value is:{}".format(date))
+    Shop.update_list(id, date)
+    return "I have your post request"
 
 
 if __name__ == "__main__":
