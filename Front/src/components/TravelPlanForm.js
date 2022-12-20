@@ -9,6 +9,8 @@ import ReactDOM from 'react-dom/client';
 const ShoppingForm = () => {
     const [index, setIndex] = useState("");
     const [product, setProduct] = useState( "");
+    const [product2, setProduct2] = useState( "");
+    const [product3, setProduct3] = useState( "");
     const [date, setDate] = useState( "");
     // const [shopping_list, setShoppingList] = useState([]);
 
@@ -63,31 +65,31 @@ const ShoppingForm = () => {
     }
 
     function handleClick() {
-        axios.get(`http://127.0.0.1:5011/show_product/${index}`)
-            .then((response) => {
-                // console.log(response.data["response"][0]['product_name'])
-                // console.log(response.data["response"].map((x) => x['product_name']))
-                setShoppingList(response.data["response"].map((x) => x['product_name']))
-                }
-            ).catch((error) => {
-            setShoppingList(['NOT FOUND'])
-            }
-        )}
+        // axios.get(`http://127.0.0.1:5011/show_product/${index}`)
+        //     .then((response) => {
+        //         // console.log(response.data["response"][0]['product_name'])
+        //         // console.log(response.data["response"].map((x) => x['product_name']))
+        //         setShoppingList(response.data["response"].map((x) => x['product_name']))
+        //         }
+        //     ).catch((error) => {
+        //     setShoppingList(['NOT FOUND'])
+        //     }
+        // )}
+    }
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
-            <label>Enter List Index to check details: </label>
+            <label>Enter travel plan to add: </label>
             <input
-                    type="number"
-                    min = "1"
+                    type="string"
                     value={index}
                     onChange={(e) => setIndex(e.target.value)}
                 />
             {/* <button type="button" onClick={handleClick}>
                 Location
             </button> */}
-            <ShoppingList items={shopping_list}/>
+            {/* <ShoppingList items={shopping_list}/> */}
             
                <input
                     type="string"
@@ -101,8 +103,8 @@ const ShoppingForm = () => {
 
               <input
                     type="string"
-                    value={product}
-                    onChange={(e) => setProduct(e.target.value)}
+                    value={product2}
+                    onChange={(e) => setProduct2(e.target.value)}
                 />
 
               <button type="button" onClick={handleAdd}>
@@ -112,8 +114,8 @@ const ShoppingForm = () => {
 
               <input
                     type="string"
-                    value={product}
-                    onChange={(e) => setProduct(e.target.value)}
+                    value={product3}
+                    onChange={(e) => setProduct3(e.target.value)}
                 />
 
               <button type="button" onClick={handleDelete}>

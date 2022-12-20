@@ -37,7 +37,7 @@ export default function StickyHeadTable() {
   const [rows, setRows] = React.useState([]);
   const getShoppingListRequest = async() => {
       // const url = "http://10.126.212.167:5011/show_list";
-      const url = "http://127.0.0.1:5011/show_list"
+      const url = "http://127.0.0.1:5021/"
       await axios.get(url).then (response => {
         setRows((response.data["response"]));
         console.log(response.data)
