@@ -112,7 +112,6 @@ def list_request():
         id = req_data['id']
         address = req_data['address']
         date = req_data['date']
-        print("Request have id:{}, and the product:{}".format(id, address))
         if request.method == "POST":
             Shop.add_list(id, address, date)
         if request.method == "DELETE":
@@ -126,7 +125,6 @@ def list_update():
     req_data = request.get_json()
     id = req_data['id']
     date = req_data['date']
-    print("date value is:{}".format(date))
     Shop.update_list(id, date)
     return "I have your post request"
 
