@@ -9,6 +9,7 @@ import ReactDOM from 'react-dom/client';
 const ShoppingForm = () => {
     const [index, setIndex] = useState("");
     const [product, setProduct] = useState( "");
+    const [date, setDate] = useState( "");
     const [shopping_list, setShoppingList] = useState([]);
 
     const handleSubmit = (event) => {
@@ -16,8 +17,22 @@ const ShoppingForm = () => {
         // alert(`Click the Check List Button to query data`);
     }
 
+    function handleDateUpdate() {
+        axios.post(`http://10.126.212.167:5011/list_update`, {
+            id:index,
+            date: date
+            })
+            .then((response) => {
+              console.log(response);
+            }, (error) => {
+              console.log(error);
+            });
+        alert(`Shoping Date of list ${index} is updated to ${date}`)
+        handleClick()
+    }
+
     function handleDelete() {
-        axios.delete(`http://192.168.10.26:5011/product`, { data:{
+        axios.delete(`http://10.126.212.167:5011/product`, { data:{
             id: index,
             name: product
         }})
@@ -31,7 +46,7 @@ const ShoppingForm = () => {
     }
 
     function handleAdd() {
-        axios.post(`http://192.168.10.26:5011/product`, {
+        axios.post(`http://10.126.212.167:5011/product`, {
             id: index,
             name: product
         })
@@ -45,7 +60,7 @@ const ShoppingForm = () => {
     }
 
     function handleClick() {
-        axios.get(`http://192.168.10.26:5011/show_product/${index}`)
+        axios.get(`http://10.126.212.167:5011/show_product/${index}`)
             .then((response) => {
                 // console.log(response.data["response"][0]['product_name'])
                 // console.log(response.data["response"].map((x) => x['product_name']))
@@ -70,7 +85,7 @@ const ShoppingForm = () => {
                 Check List
             </button>
             <ShoppingList items={shopping_list}/>
-            {shopping_list.length !== 0 && shopping_list[0] !== "NOT FOUND" &&
+            {shopping_list.length !== 0  &&
                <input
                     type="string"
                     value={product}
@@ -83,11 +98,30 @@ const ShoppingForm = () => {
               </button>
              }
 
-             { shopping_list.length !== 0 && shopping_list[0] !== "NOT FOUND" &&
+             { shopping_list.length !== 0 &&
               <button type="button" onClick={handleAdd}>
                 Add
               </button>
              }
+             { shopping_list.length !== 0 &&
+                 <label>Enter List Index to update shopping date: </label>
+             }
+
+             { shopping_list.length !== 0 &&
+                 <input
+                    type="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                />
+             }
+
+             { shopping_list.length !== 0 &&
+                 <button type="button" onClick={handleDateUpdate}>
+                Update
+              </button>
+             }
+
+
 
         </form>
 
