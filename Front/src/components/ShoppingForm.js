@@ -28,7 +28,8 @@ const ShoppingForm = () => {
               console.log(error);
             });
         alert(`Shoping Date of list ${index} is updated to ${date}`)
-        handleClick()
+        // setDate("")
+        window.location.reload();
     }
 
     function handleDelete() {
@@ -42,6 +43,7 @@ const ShoppingForm = () => {
           console.log(error);
         });
         alert(`Deleted ${product} from ${index} shopping list`)
+        setProduct("")
         handleClick()
     }
 
@@ -56,6 +58,7 @@ const ShoppingForm = () => {
           console.log(error);
         });
         alert(`Added ${product} into ${index} shopping list`)
+        setProduct("")
         handleClick()
     }
 
