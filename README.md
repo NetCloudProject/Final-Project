@@ -1,5 +1,9 @@
 # Final-Project
 
+[![awesome](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://github.com/sindresorhus/awesome)
+
+
+
 <p>
 <a href="https://reactjs.org/"><img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 "></a>
@@ -10,6 +14,7 @@
 <a href="https://www.mysql.com/"><img src="https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white
 "></a>
 </p>
+
 
 ## Intro
 This is the git repo for 6156 Group - Netease Cloud
