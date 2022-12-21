@@ -12,23 +12,13 @@ import {useEffect} from "react";
 import './FormStyles.css'
 
 const columns = [
-  { id: 'list_id', label: 'List Index', minWidth: 170, color : 'black' },
-  { id: 'shopping_location', label: 'Shopping Location', minWidth: 100 },
-  {
-    id: 'shopping_date',
-    label: 'Shopping Date',
-    minWidth: 170,
-    align: 'right',
-    // format: (value) => value.toLocaleString('en-US'),
-  },
+  { id: 'id', label: 'Travel Index', minWidth: 170, color : 'black' },
+  { id: 'location', label: 'Shopping Location', minWidth: 100 },
+  { id: 'start', label: 'Shopping Start Date', minWidth: 170, align: 'right',},
+  { id: 'end', label: 'Shopping Start Date', minWidth: 170, align: 'right',},
 
 
 ];
-
-function createData(name, code, population) {
-  return { name, code, population };
-}
-
 
 
 export default function StickyHeadTable() {
