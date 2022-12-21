@@ -12,11 +12,11 @@ import {useEffect} from "react";
 import './FormStyles.css'
 
 const columns = [
-  { id: 'id', label: 'Travel Index', minWidth: 170, color : 'black' },
-  { id: 'location', label: 'Travel Location', minWidth: 100 },
-  { id: 'start', label: 'Travel Start Date', minWidth: 170, align: 'right',},
-  { id: 'end', label: 'Travel End Date', minWidth: 170, align: 'right',},
-
+  { id: 'id', label: 'Schedule Index', minWidth: 170, color : 'black' },
+  { id: 'name', label: 'Schedule Name', minWidth: 100 },
+  { id: 'start', label: 'Start Date', minWidth: 170, align: 'right',},
+  { id: 'end', label: 'End Date', minWidth: 170, align: 'right',},
+  { id: 'description', label: 'Description', minWidth: 170, align: 'right',},
 
 ];
 
@@ -27,7 +27,7 @@ export default function StickyHeadTable() {
   const [rows, setRows] = React.useState([]);
   const getShoppingListRequest = async() => {
       // const url = "http://10.126.212.167:5011/show_list";
-      const url = "http://127.0.0.1:5021/"
+      const url = "http://127.0.0.1:5000/list_schedule"
       await axios.get(url).then (response => {
         setRows((response.data["response"]));
         console.log(response.data)

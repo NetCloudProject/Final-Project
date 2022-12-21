@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import boto3
 from botocore.exceptions import ClientError
 import logging
+from flask_cors import CORS, cross_origin
 from datetime import datetime
 
 # user = 'root'
@@ -26,6 +27,7 @@ logging.basicConfig(level=logging.INFO,
 sns_client = boto3.client('sns', region_name=AWS_REGION)
 
 app = Flask(__name__)
+cors = CORS(app)
 print('mysql+pymysql://%s:%s@%s:%s/%s'%(user, password, host, port, db_name))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://%s:%s@%s:%s/%s'%(user, password, host, port, db_name)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -105,7 +107,7 @@ def main_page():
     # we want to show all travel plan on main page
     plan_list = TravelPlan.query.all()
     return jsonify({"response": unpack(plan_list)})
-    return render_template('main_page.html', plan_list=plan_list)
+    # return render_template('main_page.html', plan_list=plan_list)
 
 @app.route('/list_plan')
 def list_plan():
@@ -116,12 +118,12 @@ def list_plan():
         result.append(c)
     return jsonify({"response": result})
 
-@app.route("/add", methods=["POST"])
-def add():
+@app.route("/add/<start>/<end>/<loc>")
+def add(start,end,loc):
     # add new travel plan
-    start = request.form.get("travel_start_time")
-    end = request.form.get("travel_end_time")
-    loc = request.form.get("travel_location")
+    # start = request.form.get("travel_start_time")
+    # end = request.form.get("travel_end_time")
+    # loc = request.form.get("travel_location")
     new_plan = TravelPlan(travel_start_time=start, travel_end_time=end, travel_location=loc, plan_completed=False)
     db.session.add(new_plan)
     db.session.commit()
