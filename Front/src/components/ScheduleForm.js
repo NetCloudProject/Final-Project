@@ -11,6 +11,7 @@ const ShoppingForm = () => {
     const [product, setProduct] = useState( "");
     const [product2, setProduct2] = useState( "");
     const [product3, setProduct3] = useState( "");
+    const [product4, setProduct4] = useState( "");
     const [date, setDate] = useState( "");
     // const [shopping_list, setShoppingList] = useState([]);
 
@@ -35,13 +36,13 @@ const ShoppingForm = () => {
     // }
 
     function handleDelete() {
-        axios.get(`http://127.0.0.1:5021/delete/${product3}`)
+        axios.get(`http://127.0.0.1:5000/delete_schedule/${product3}`)
         .then((response) => {
           console.log(response);
         }, (error) => {
           console.log(error);
         });
-        alert(`Deleted ${product3} from travel list`)
+        alert(`Deleted ${product3} from schedule`)
         // setProduct("")
         // handleClick()
         window.location.reload();
@@ -52,14 +53,14 @@ const ShoppingForm = () => {
         //     id: index,
         //     name: product
         // })
-        axios.get(`http://127.0.0.1:5021/add/${product}/${product2}/${index}`
+        axios.get(`http://127.0.0.1:5000/add_schedule/${index}/${product}/${product2}/${product4}`
         )
         .then((response) => {
           console.log(response);
         }, (error) => {
           console.log(error);
         });
-        alert(`Added ${index} into ${index} travel plan`)
+        alert(`Added ${index} into schedule`)
         // setProduct("")
         window.location.reload();
         // handleClick()
@@ -86,8 +87,8 @@ const ShoppingForm = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-            <label>Enter travel plan to add: </label>
-                <label>Travel location:</label>
+            <label>Enter schedule to add: </label>
+                <label>Schedule name:</label>
             <input
                     type="string"
                     value={index}
@@ -97,7 +98,7 @@ const ShoppingForm = () => {
                 Location
             </button> */}
             {/* <ShoppingList items={shopping_list}/> */}
-            <label>Travel start date: </label>
+            <label>Schedule start date: </label>
                <input
                     type="string"
                     value={product}
@@ -107,7 +108,7 @@ const ShoppingForm = () => {
               {/* <button type="button" onClick={handleDelete}>
                 Start Date
               </button> */}
-              <label>Travel end date: </label>
+              <label>Schedule end date: </label>
 
               <input
                     type="string"
@@ -115,11 +116,21 @@ const ShoppingForm = () => {
                     onChange={(e) => setProduct2(e.target.value)}
                 />
 
+
+
+                <label>Schedule description: </label>
+
+              <input
+                    type="string"
+                    value={product4}
+                    onChange={(e) => setProduct4(e.target.value)}
+                />
+
               <button type="button" onClick={handleAdd}>
                    Add
               </button>
 
-                <label>Enter Travel Index to delete: </label>
+                <label>Enter Schedule Index to delete: </label>
               <input
                     type="string"
                     value={product3}

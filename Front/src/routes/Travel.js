@@ -11,7 +11,7 @@ const Travel = () => {
         <div>
             <Navbar/>
             <HeroImage heading='Travel.' text='Make your plan.'/>
-            <TravelCards/>
+            {/*<TravelCards/>*/}
 
             <StickyHeadTable/>
             <ShoppingForm />

@@ -4,6 +4,7 @@ from flask import Response
 from flask import request
 import json
 import mysql.connector
+from flask_cors import CORS,cross_origin
 
 from datetime import datetime
 import socket
@@ -91,6 +92,7 @@ class DBManager:
 
 
 server = flask.Flask(__name__)
+cors = CORS(server)
 # conn = None
 conn = DBManager()
 
@@ -116,7 +118,14 @@ def list_schedule():
     rec = conn.query_all()
     result = []
     for c in rec:
-        result.append(c)
+        temp={}
+        temp['id']=c[0]
+        temp['name'] = c[1]
+        temp['start'] = c[2]
+        temp['end'] = c[3]
+        temp['description'] = c[4]
+
+        result.append(temp)
     return flask.jsonify({"response": result})
 
 @server.route('/create_schedule')
