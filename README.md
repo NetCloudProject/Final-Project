@@ -10,8 +10,7 @@
 This is the git repo for 6156 Group - Netease Cloud
 
 ## Link for the slides presentation: 
-<a href="https://docs.google.com/presentation/d/1MvFerIajkF_7eNrPqZPHVMIqC6BbYphq5qkf1SJue6E/edit?usp=sharing"><img src="https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white
-"></a>
+[![google](https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white)](https://docs.google.com/presentation/d/1MvFerIajkF_7eNrPqZPHVMIqC6BbYphq5qkf1SJue6E/edit?usp=sharing)
 
 
 ## File Structure
